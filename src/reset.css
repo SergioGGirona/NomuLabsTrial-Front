@@ -1,0 +1,66 @@
+body,
+html {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Open Sans", sans-serif;
+  font-weight: lighter;
+  color: #1b252e;
+  scroll-behavior: smooth;
+  scroll-snap-type: y mandatory;
+  overflow-x: hidden;
+  background-color: #f0f5f3;
+}
+
+div,
+span,
+h1,
+h2,
+h3,
+h4,
+p,
+a,
+img,
+ol,
+ul,
+li,
+form,
+label,
+legend,
+footer,
+menu,
+nav,
+section {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  vertical-align: baseline;
+}
+
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+ol,
+ul {
+  list-style: none;
+}
+
+body::-webkit-scrollbar {
+  background-color: whitesmoke;
+  width: 0.5rem;
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: rgb(186, 186, 186);
+  border-radius: 20px;
+}
+
+::selection {
+  color: white;
+  text-shadow: 0 0 10px black;
+}

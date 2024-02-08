@@ -1,7 +1,9 @@
-import { SyntheticEvent, useState } from "react";
-import styles from "./register.module.scss";
+import { SyntheticEvent, useState } from 'react';
+import { useUsers } from '../../hooks/use.users';
+import styles from './register.module.scss';
 
 export function Register() {
+  const { addUser } = useUsers();
   const [isPrivate, setIsPrivate] = useState(false);
 
   const handleCheckboxChange = () => {
@@ -12,10 +14,12 @@ export function Register() {
 
     const formElement = ev.currentTarget as HTMLFormElement;
     const formData = new FormData(formElement);
-    formData.set("isPrivate", isPrivate.toString());
+    formData.set('isPrivate', isPrivate.toString());
 
+    addUser(formData);
     console.log(formData);
   };
+
   return (
     <form onSubmit={handleSubmit}>
       <hgroup>
@@ -23,7 +27,7 @@ export function Register() {
         <p>and enjoy taking recipes from all over the world.</p>
       </hgroup>
 
-      <div className={styles["form__group"]}>
+      <div className={styles['form__group']}>
         <input
           type="text"
           placeholder="Type a unique userName"
@@ -56,13 +60,13 @@ export function Register() {
           required
         />
 
-        <div className={styles["form__group-date"]}>
+        <div className={styles['form__group-date']}>
           <label htmlFor="bornDate">Your birth date?</label>
           <input type="date" id="bornDate" name="bornDate" required />
         </div>
       </div>
 
-      <div className={styles["form__group-private"]}>
+      <div className={styles['form__group-private']}>
         <p>
           Want to make it <em>private</em>?
         </p>
@@ -72,13 +76,13 @@ export function Register() {
             id="isPrivate"
             name="isPrivate"
             onChange={handleCheckboxChange}
-            className={styles["form__group-check"]}
+            className={styles['form__group-check']}
           />
           <label htmlFor="isPrivate">Private</label>
         </div>
       </div>
 
-      <div className={styles["form__group"]}>
+      <div className={styles['form__group']}>
         <label htmlFor="avatar">Choose a photo for the reward poster</label>
         <input type="file" id="avatar" name="avatar" required />
       </div>

@@ -1,6 +1,6 @@
-import { User, UserLogin } from "../model/user";
-import { Payload } from "../types/payload";
-import { Repository } from "./repository";
+import { User, UserLogin } from '../model/user';
+import { Payload } from '../types/payload';
+import { Repository } from './repository';
 
 export class UsersRepository implements Repository<User> {
   constructor(public urlBase: string) {}
@@ -14,7 +14,7 @@ export class UsersRepository implements Repository<User> {
   }
 
   async getById(id: string): Promise<User> {
-    const url = this.urlBase + "/" + id;
+    const url = this.urlBase + '/' + id;
     const request = await fetch(url);
     if (!request.ok)
       throw new Error(`Error ${request.status}: ${request.statusText}`);
@@ -23,14 +23,11 @@ export class UsersRepository implements Repository<User> {
     return data;
   }
 
-  async create(item: FormData, token: string): Promise<User> {
-    const url = this.urlBase + "/register";
+  async create(item: FormData): Promise<User> {
+    const url = this.urlBase + '/register';
     const request = await fetch(url, {
-      method: "POST",
+      method: 'POST',
       body: item,
-      headers: {
-        Authorization: "Bearer " + token,
-      },
     });
     if (!request.ok)
       throw new Error(
@@ -42,11 +39,11 @@ export class UsersRepository implements Repository<User> {
 
   async update(id: string, item: Partial<User>, token: string): Promise<User> {
     const request = await fetch(`${this.urlBase}/update/${id}`, {
-      method: "PATCH",
+      method: 'PATCH',
       body: JSON.stringify(item),
       headers: {
-        "Content-Type": "application/json",
-        Authorization: "Bearer " + token,
+        'Content-Type': 'application/json',
+        Authorization: 'Bearer ' + token,
       },
     });
     if (!request.ok)
@@ -59,10 +56,10 @@ export class UsersRepository implements Repository<User> {
 
   async login(item: UserLogin): Promise<Payload> {
     const request = await fetch(`${this.urlBase}/login`, {
-      method: "PATCH",
+      method: 'PATCH',
       body: JSON.stringify(item),
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
       },
     });
     if (!request.ok)
@@ -74,11 +71,11 @@ export class UsersRepository implements Repository<User> {
   }
 
   async delete(id: string, token: string): Promise<void> {
-    const url = this.urlBase + "/" + id;
+    const url = this.urlBase + '/' + id;
     const request = await fetch(url, {
-      method: "DELETE",
+      method: 'DELETE',
       headers: {
-        Authorization: "Bearer " + token,
+        Authorization: 'Bearer ' + token,
       },
     });
     if (!request.ok)

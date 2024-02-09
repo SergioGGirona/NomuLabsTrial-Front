@@ -1,13 +1,21 @@
-import "./App.css";
-import { Login } from "./components/login/login";
+import './App.css';
+import { Header } from './components/header/header.js';
+import { Menu } from './components/menu/menu.js';
+import { AppRouter } from './routes/app.routes.js';
+import { RoutesOptions } from './types/routes.js';
 function App() {
+  const RoutesOptions: RoutesOptions[] = [
+    { path: '/', label: 'Home' },
+    { path: '/register', label: 'Register' },
+    { path: '/login', label: 'Login' },
+    { path: '/*', label: 'ErrorPage' },
+  ];
   return (
     <>
-      <img src="./favicon.png" alt="Logo of coockbook" />
-      <h1>Cookbook</h1>
-      <p>The social network for recipe pirates</p>
-
-      <Login />
+      <Header />
+      <AppRouter options={RoutesOptions} />
+      <Menu />
+      <div className="menuSlot"></div>
     </>
   );
 }

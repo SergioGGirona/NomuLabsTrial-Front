@@ -1,9 +1,12 @@
 import { SyntheticEvent, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useUsers } from '../../hooks/use.users';
 import styles from './register.module.scss';
 
-export function Register() {
-  const { addUser } = useUsers();
+function Register() {
+  const navigate = useNavigate();
+
+  const { addUser, hasError } = useUsers();
   const [isPrivate, setIsPrivate] = useState(false);
 
   const handleCheckboxChange = () => {
@@ -17,7 +20,8 @@ export function Register() {
     formData.set('isPrivate', isPrivate.toString());
 
     addUser(formData);
-    console.log(formData);
+    if (hasError === true) return;
+    navigate('/login');
   };
 
   return (
@@ -65,22 +69,23 @@ export function Register() {
           <input type="date" id="bornDate" name="bornDate" required />
         </div>
       </div>
-
-      <div className={styles['form__group-private']}>
-        <p>
-          Want to make it <em>private</em>?
-        </p>
-        <div>
-          <input
-            type="checkbox"
-            id="isPrivate"
-            name="isPrivate"
-            onChange={handleCheckboxChange}
-            className={styles['form__group-check']}
-          />
-          <label htmlFor="isPrivate">Private</label>
+      <fieldset>
+        <div className={styles['form__group-private']}>
+          <p>
+            Want to make it <em>private</em>?
+          </p>
+          <div>
+            <input
+              type="checkbox"
+              id="isPrivate"
+              name="isPrivate"
+              onChange={handleCheckboxChange}
+              className={styles['form__group-check']}
+            />
+            <label htmlFor="isPrivate">Private</label>
+          </div>
         </div>
-      </div>
+      </fieldset>
 
       <div className={styles['form__group']}>
         <label htmlFor="avatar">Choose a photo for the reward poster</label>
@@ -90,3 +95,5 @@ export function Register() {
     </form>
   );
 }
+
+export default Register;

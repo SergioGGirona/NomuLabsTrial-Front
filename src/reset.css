@@ -3,9 +3,9 @@ html {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Roboto", sans-serif;
+  font-family: 'Roboto', sans-serif;
   font-weight: lighter;
-  color: #1b252e;
+  color: #333;
   scroll-behavior: smooth;
   scroll-snap-type: y mandatory;
   overflow-x: hidden;
@@ -38,7 +38,6 @@ section {
 }
 
 footer,
-header,
 hgroup,
 menu,
 nav,

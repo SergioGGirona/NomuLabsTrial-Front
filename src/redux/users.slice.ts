@@ -26,13 +26,9 @@ const usersSlice = createSlice({
   initialState,
   reducers: {},
   extraReducers: (builder) => {
-    builder.addCase(
-      registerThunk.fulfilled,
-      (state, { payload }: { payload: User }) => {
-        state.userLogged = payload;
-        state.hasError = false;
-      }
-    );
+    builder.addCase(registerThunk.fulfilled, (state) => {
+      state.hasError = false;
+    });
 
     builder.addCase(registerThunk.pending, (state) => {
       state.hasError = null;
@@ -50,6 +46,7 @@ const usersSlice = createSlice({
         state.userLogged = payload.user;
         state.token = payload.token;
         state.followers = payload.user.followers;
+        state.userStatus = 'logged';
       }
     );
 

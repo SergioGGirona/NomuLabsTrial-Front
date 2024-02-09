@@ -1,14 +1,25 @@
-import { SyntheticEvent } from "react";
-import styles from "./login.module.scss";
+import { SyntheticEvent } from 'react';
+import { useUsers } from '../../hooks/use.users';
+import { UserLogin } from '../../model/user';
+import styles from './login.module.scss';
 
-export function Login() {
+function Login() {
+  const { loginUser } = useUsers();
   const handleSubmit = (ev: SyntheticEvent) => {
     ev.preventDefault();
 
-    const formElement = ev.currentTarget as HTMLFormElement;
-    const formData = new FormData(formElement);
+    const form = ev.currentTarget as HTMLFormElement;
+    const loginData: UserLogin = {
+      userName: (form.elements.namedItem('userName') as HTMLInputElement).value,
+      password: (form.elements.namedItem('password') as HTMLInputElement).value,
+    };
 
-    console.log(formData);
+    try {
+      loginUser(loginData);
+    } catch (error) {
+      console.log(error);
+    }
+    console.log(loginData);
   };
 
   return (
@@ -47,8 +58,10 @@ export function Login() {
         Log in
       </button>
       <p>
-        Not registered yet? <a href="#">Click here</a>
+        Not registered yet? <a href="/register">Click here</a>
       </p>
     </form>
   );
 }
+
+export default Login;

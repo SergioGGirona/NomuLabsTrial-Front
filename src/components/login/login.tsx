@@ -1,10 +1,13 @@
 import { SyntheticEvent } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useUsers } from '../../hooks/use.users';
 import { UserLogin } from '../../model/user';
 import styles from './login.module.scss';
 
 function Login() {
   const { loginUser } = useUsers();
+
+  const navigate = useNavigate();
   const handleSubmit = (ev: SyntheticEvent) => {
     ev.preventDefault();
 
@@ -19,7 +22,7 @@ function Login() {
     } catch (error) {
       console.log(error);
     }
-    console.log(loginData);
+    navigate('/');
   };
 
   return (

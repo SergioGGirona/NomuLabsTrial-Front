@@ -1,0 +1,26 @@
+.pre-login {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 2rem;
+  h2 {
+    margin: 1rem 0;
+  }
+  p {
+    font-weight: 400;
+    text-align: center;
+    width: 300px;
+  }
+  .link {
+    margin: 1rem;
+    font-weight: 600;
+    color: #333;
+  }
+}
+
+main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

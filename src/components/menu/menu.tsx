@@ -12,30 +12,30 @@ export function Menu() {
       <ul>
         {userStatus === 'logged' ? (
           <li>
-            <FaSkullCrossbones />
             <Link className={styles['link']} to="/Login">
+              <FaSkullCrossbones />
               Profile
             </Link>
           </li>
         ) : (
           <li>
-            <TbNavigationFilled />
             <Link className={styles['link']} to="/Login">
+              <TbNavigationFilled />
               Log in
             </Link>
           </li>
         )}
 
         <li>
-          <FaCompass />
           <Link className={styles['link']} to="/">
+            <FaCompass />
             Discover
           </Link>
         </li>
 
         <li>
-          <FaBell />
           <Link className={styles['link']} to="/">
+            <FaBell />
             Alerts
           </Link>
         </li>

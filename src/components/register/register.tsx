@@ -27,7 +27,7 @@ function Register() {
   return (
     <form onSubmit={handleSubmit}>
       <hgroup>
-        <h3>Sign up here...</h3>
+        <h3>Hoist the Jolly Roger!</h3>
         <p>and enjoy taking recipes from all over the world.</p>
       </hgroup>
 

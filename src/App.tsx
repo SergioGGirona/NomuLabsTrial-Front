@@ -8,6 +8,7 @@ function App() {
     { path: '/', label: 'Home' },
     { path: '/register', label: 'Register' },
     { path: '/login', label: 'Login' },
+    { path: '/profile', label: 'Profile' },
     { path: '/*', label: 'ErrorPage' },
   ];
   return (

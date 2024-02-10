@@ -8,7 +8,11 @@ function Home() {
     <>
       {userStatus === 'logged' && token.length > 15 ? (
         <main>
-          <Search></Search>
+          <Search />
+          <div className={styles.finish}>
+            <p className={styles.finish__title}>Arr matey! Finished already?</p>
+            <p>Time to find more scallywags to follow and try out recipes.</p>
+          </div>
         </main>
       ) : (
         <div className={styles['pre-login']}>

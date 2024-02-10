@@ -6,6 +6,7 @@ const Register = lazy(() => import('../components/register/register'));
 const Login = lazy(() => import('../components/login/login'));
 
 const Home = lazy(() => import('../pages/home/home'));
+const Profile = lazy(() => import('../pages/profile/profile'));
 
 type Props = {
   readonly options: RoutesOptions[];
@@ -19,6 +20,7 @@ export function AppRouter({ options }: Props) {
         <Route path={paths[0]} element={<Home />}></Route>
         <Route path={paths[1]} element={<Register />}></Route>
         <Route path={paths[2]} element={<Login />}></Route>
+        <Route path={paths[3]} element={<Profile />}></Route>
       </Routes>
     </Suspense>
   );

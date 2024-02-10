@@ -12,14 +12,14 @@ export function Menu() {
       <ul>
         {userStatus === 'logged' ? (
           <li>
-            <Link className={styles['link']} to="/Login">
+            <Link className={styles['link']} to="/profile">
               <FaSkullCrossbones />
               Profile
             </Link>
           </li>
         ) : (
           <li>
-            <Link className={styles['link']} to="/Login">
+            <Link className={styles['link']} to="/login">
               <TbNavigationFilled />
               Log in
             </Link>

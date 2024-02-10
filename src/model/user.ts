@@ -1,4 +1,4 @@
-import { ImageData } from "../types/image";
+import { ImageData } from '../types/image';
 
 export type UserLogin = {
   userName: string;

@@ -9,8 +9,9 @@ function App() {
     { path: '/register', label: 'Register' },
     { path: '/login', label: 'Login' },
     { path: '/profile', label: 'Profile' },
-    { path: '/*', label: 'ErrorPage' },
+    { path: '/search', label: 'Search' },
   ];
+
   return (
     <>
       <Header />

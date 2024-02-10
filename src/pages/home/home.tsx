@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { Search } from '../../components/search/search';
+import { Posts } from '../../components/posts/posts';
 import { useUsers } from '../../hooks/use.users';
 import styles from './home.module.scss';
 function Home() {
@@ -8,7 +8,7 @@ function Home() {
     <>
       {userStatus === 'logged' && token.length > 15 ? (
         <main>
-          <Search />
+          <Posts />
           <div className={styles.finish}>
             <p className={styles.finish__title}>Arr matey! Finished already?</p>
             <p>Time to find more scallywags to follow and try out recipes.</p>

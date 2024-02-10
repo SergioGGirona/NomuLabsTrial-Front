@@ -1,4 +1,4 @@
-import { FaBell, FaCompass, FaSkullCrossbones } from 'react-icons/fa';
+import { FaCompass, FaSearch, FaSkullCrossbones } from 'react-icons/fa';
 import { TbNavigationFilled } from 'react-icons/tb';
 
 import { Link } from 'react-router-dom';
@@ -34,9 +34,9 @@ export function Menu() {
         </li>
 
         <li>
-          <Link className={styles['link']} to="/">
-            <FaBell />
-            Alerts
+          <Link className={styles['link']} to="/search">
+            <FaSearch />
+            Search
           </Link>
         </li>
       </ul>

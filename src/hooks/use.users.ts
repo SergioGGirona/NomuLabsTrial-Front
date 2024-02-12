@@ -1,7 +1,7 @@
 import { useMemo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { UserLogin } from '../model/user.ts';
-import { loginThunk, registerThunk } from '../redux/users.thunks';
+import { User, UserLogin } from '../model/user.ts';
+import { loginThunk, registerThunk, searchThunk } from '../redux/users.thunks';
 import { UsersRepository } from '../repository/users.repository';
 import { AppDispatch, RootState } from './store.ts';
 export const urlBase = 'http://localhost:7373/';
@@ -21,7 +21,9 @@ export function useUsers() {
     usersDispatch(loginThunk({ repository, user }));
   };
 
-  const loadFollowers = async () => {};
+  const searchFollowers = async (user: User['userName']) => {
+    usersDispatch(searchThunk({ repository, user }));
+  };
 
   return {
     followers: usersState.followers,
@@ -29,8 +31,9 @@ export function useUsers() {
     hasError: usersState.hasError,
     token: usersState.token,
     userLogged: usersState.userLogged,
+    usersSearched: usersState.usersSearched,
     addUser,
     loginUser,
-    loadFollowers,
+    searchFollowers,
   };
 }

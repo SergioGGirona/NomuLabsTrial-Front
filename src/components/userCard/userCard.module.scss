@@ -1,0 +1,58 @@
+.user__card {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  border: 2px solid #333;
+  border-radius: 10px;
+  gap: 10px;
+  width: 15rem;
+
+  .user__card__main {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    img {
+      height: 3rem;
+      width: 3rem;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 1px solid #333;
+    }
+    user__card__names {
+      h4 {
+        font-size: 2rem;
+      }
+      span {
+        font-size: 0.5rem;
+      }
+    }
+  }
+  .user__card__followers {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    gap: 1rem;
+  }
+  p {
+    font-weight: 400;
+  }
+  button {
+    max-width: 10rem;
+    width: fit-content;
+    padding: 10px 1rem;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    &:hover {
+      background-color: white;
+      color: #333;
+    }
+  }
+}

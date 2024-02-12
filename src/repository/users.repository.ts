@@ -6,7 +6,7 @@ export class UsersRepository implements Repository<User> {
   constructor(public urlBase: string) {}
 
   async getAll(): Promise<User[]> {
-    const request = await fetch(this.urlBase);
+    const request = await fetch(`${this.urlBase}/users`);
     if (!request.ok)
       throw new Error(`Error ${request.status}: ${request.statusText}`);
     const data = await request.json();
@@ -82,5 +82,21 @@ export class UsersRepository implements Repository<User> {
       throw new Error(
         `Error ${request.status}: ${request.statusText}. Try again.`
       );
+  }
+
+  async search(item: User['userName']): Promise<User[]> {
+    const searchUrl = `${this.urlBase}/search/${item}`;
+    const request = await fetch(searchUrl, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+    if (!request.ok)
+      throw new Error(
+        `Error ${request.status}: ${request.statusText}. Try again.`
+      );
+    const data = await request.json();
+    return data;
   }
 }

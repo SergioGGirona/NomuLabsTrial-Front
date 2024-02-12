@@ -47,3 +47,11 @@ export const deleteThunk = createAsyncThunk<
   await repository.delete(user.id, token);
   return user.id;
 });
+
+export const searchThunk = createAsyncThunk<
+  User[],
+  { repository: UsersRepository; user: User['userName'] }
+>('users/search', async ({ repository, user }) => {
+  const userSearched = await repository.search(user);
+  return userSearched;
+});

@@ -1,6 +1,6 @@
 import { BsFillEyeFill, BsFillEyeSlashFill } from 'react-icons/bs';
 import { GiTreasureMap } from 'react-icons/gi';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useUsers } from '../../hooks/use.users';
 import styles from './profile.module.scss';
 function Profile() {
@@ -14,7 +14,9 @@ function Profile() {
       <section>
         <div className={styles.profile__photo}>
           <h2>Your pirate profile</h2>
-          <button>Edit</button>
+          <Link to="/update" className={styles.profile__update}>
+            Edit
+          </Link>
         </div>
         <div className={styles['user__main-data']}>
           <img
@@ -45,7 +47,7 @@ function Profile() {
             <p>{userLogged.bio}</p>
           </div>
 
-          <p className={styles.profile__type}>
+          <span className={styles.profile__type}>
             Your profile is
             {userLogged.isPrivate === true ? (
               <div className={styles.profile__type_icon}>
@@ -58,7 +60,7 @@ function Profile() {
                 <span>Public</span>
               </div>
             )}
-          </p>
+          </span>
         </div>
       </section>
     );

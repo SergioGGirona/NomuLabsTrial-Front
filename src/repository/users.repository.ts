@@ -38,7 +38,7 @@ export class UsersRepository implements Repository<User> {
   }
 
   async update(id: string, item: Partial<User>, token: string): Promise<User> {
-    const request = await fetch(`${this.urlBase}/update/${id}`, {
+    const request = await fetch(`${this.urlBase}/${id}`, {
       method: 'PATCH',
       body: JSON.stringify(item),
       headers: {

@@ -7,11 +7,14 @@ type Props = {
   user: User;
 };
 export function UserCard({ user }: Props) {
-  const { userLogged } = useUsers();
+  const { userLogged, updateUser, token } = useUsers();
 
   const handleFollow = async (user: User) => {
-    user.followers.push(user);
+    user.followers.push(userLogged!);
+    console.log('user:', user);
+    updateUser(user, user.id, token);
     userLogged!.usersFollowed.push(user);
+    updateUser(userLogged!, userLogged!.id, token);
   };
   return (
     <li className={styles.user__card}>

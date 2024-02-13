@@ -1,7 +1,12 @@
 import { createAction, createSlice } from '@reduxjs/toolkit';
 import { User } from '../model/user';
 import { Payload } from '../types/payload';
-import { loginThunk, registerThunk, searchThunk } from './users.thunks';
+import {
+  loginThunk,
+  registerThunk,
+  searchThunk,
+  updateThunk,
+} from './users.thunks';
 
 const resetUserState = createAction('RESET_USER_STATE');
 
@@ -77,6 +82,14 @@ const usersSlice = createSlice({
     builder.addCase(searchThunk.rejected, (state) => {
       state.hasError = true;
     });
+
+    builder.addCase(
+      updateThunk.fulfilled,
+      (state, { payload }: { payload: User }) => {
+        state.userLogged!.usersFollowed = payload.usersFollowed;
+        state.hasError = false;
+      }
+    );
   },
 });
 

@@ -10,6 +10,7 @@ function App() {
     { path: '/login', label: 'Login' },
     { path: '/profile', label: 'Profile' },
     { path: '/search', label: 'Search' },
+    { path: '/update', label: 'Update' },
   ];
 
   return (

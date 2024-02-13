@@ -4,6 +4,7 @@ import { useUsers } from '../../hooks/use.users';
 import styles from './home.module.scss';
 function Home() {
   const { userStatus, token } = useUsers();
+
   return (
     <>
       {userStatus === 'logged' && token.length > 15 ? (

@@ -11,6 +11,7 @@ function App() {
     { path: '/profile', label: 'Profile' },
     { path: '/search', label: 'Search' },
     { path: '/update', label: 'Update' },
+    { path: '/post', label: 'Post' },
   ];
 
   return (

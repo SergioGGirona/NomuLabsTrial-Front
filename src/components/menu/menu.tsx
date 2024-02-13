@@ -1,6 +1,7 @@
 import { FaCompass, FaSearch, FaSkullCrossbones } from 'react-icons/fa';
 import { TbNavigationFilled } from 'react-icons/tb';
 
+import { RiChatNewLine } from 'react-icons/ri';
 import { Link } from 'react-router-dom';
 import { useUsers } from '../../hooks/use.users';
 import styles from './menu.module.scss';
@@ -30,6 +31,13 @@ export function Menu() {
           <Link className={styles['link']} to="/">
             <FaCompass />
             Discover
+          </Link>
+        </li>
+
+        <li>
+          <Link className={styles['link']} to="/post">
+            <RiChatNewLine />
+            New post
           </Link>
         </li>
 

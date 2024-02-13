@@ -1,9 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit';
+import postsReducer from '../redux/posts.slice';
 import usersReducer from '../redux/users.slice';
 
 export const appStore = configureStore({
   reducer: {
     usersState: usersReducer,
+    postsState: postsReducer,
   },
 });
 

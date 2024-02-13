@@ -9,6 +9,7 @@ const Home = lazy(() => import('../pages/home/home'));
 const Profile = lazy(() => import('../pages/profile/profile'));
 const Search = lazy(() => import('../components/search/search'));
 const Update = lazy(() => import('../components/profileForm/profileForm'));
+const NewPost = lazy(() => import('../components/postForm/postForm'));
 
 type Props = {
   readonly options: RoutesOptions[];
@@ -25,6 +26,7 @@ export function AppRouter({ options }: Props) {
         <Route path={paths[3]} element={<Profile />}></Route>
         <Route path={paths[4]} element={<Search />}></Route>
         <Route path={paths[5]} element={<Update />}></Route>
+        <Route path={paths[6]} element={<NewPost />}></Route>
       </Routes>
     </Suspense>
   );

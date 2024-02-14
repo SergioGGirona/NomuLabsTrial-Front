@@ -1,0 +1,118 @@
+section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 1rem;
+  .profile__photo {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 400px;
+    height: 3rem;
+    h2 {
+      font-weight: 100;
+      word-wrap: break-word;
+    }
+    .profile__update {
+      padding: 10px 1rem;
+      background-color: #333;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease-in-out;
+
+      &:hover {
+        background-color: white;
+        color: #333;
+        border: 1px solid #333;
+      }
+    }
+  }
+
+  .user__main-data {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    img {
+      height: 8rem;
+      width: 8rem;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 1px solid #333;
+    }
+
+    hgroup {
+      h3 {
+        font-size: 3rem;
+      }
+      p {
+        padding: 0.3rem 0;
+        font-size: 1.2rem;
+      }
+    }
+  }
+  .user__data {
+    h4 {
+      font-weight: 100;
+      font-size: 1.3rem;
+      margin-bottom: 1rem;
+    }
+    span {
+      padding: 1rem;
+    }
+
+    .follow {
+      padding: 0.1rem 1rem;
+
+      em {
+        font-size: 1.5rem;
+      }
+    }
+
+    .profile__bio {
+      display: flex;
+      flex-direction: column;
+      span {
+        padding: 1rem 0 0.4rem;
+      }
+      p {
+        max-width: 400px;
+      }
+    }
+    .profile__bio::before {
+      content: '';
+      border-top: 1px solid #333;
+      margin-top: 1rem;
+    }
+
+    .profile__type {
+      border: 1px solid #333;
+      width: fit-content;
+      padding: 0 1rem;
+      line-height: center;
+      margin: 1rem 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      .profile__type_icon {
+        display: flex;
+        align-items: center;
+        svg {
+          font-size: 1.5rem;
+          padding-left: 1rem;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 391px) {
+  section {
+    .user__main-data hgroup {
+      h3 {
+        font-size: 1.5rem;
+      }
+    }
+  }
+}

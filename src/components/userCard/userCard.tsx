@@ -9,12 +9,30 @@ type Props = {
 export function UserCard({ user }: Props) {
   const { userLogged, updateUser, token } = useUsers();
 
-  const handleFollow = async (user: User) => {
-    user.followers.push(userLogged!);
-    console.log('user:', user);
-    updateUser(user, user.id, token);
-    userLogged!.usersFollowed.push(user);
-    updateUser(userLogged!, userLogged!.id, token);
+  const handleFollow = async (userToFollow: User) => {
+    if (!userLogged) return;
+
+    const isFollowing = userLogged.usersFollowed.some(
+      (followedUser) => followedUser.id === userToFollow.id
+    );
+
+    if (isFollowing) {
+      const updatedFollowedUsers = userLogged.usersFollowed.filter(
+        (followedUser) => followedUser.id !== userToFollow.id
+      );
+      const updatedUserLogged: Partial<User> = {
+        usersFollowed: updatedFollowedUsers,
+      };
+
+      await updateUser(updatedUserLogged, userLogged.id, token);
+    } else {
+      const updatedFollowedUsers = [...userLogged.usersFollowed, userToFollow];
+      const updatedUserLogged: Partial<User> = {
+        usersFollowed: updatedFollowedUsers,
+      };
+
+      await updateUser(updatedUserLogged, userLogged.id, token);
+    }
   };
   return (
     <li className={styles.user__card}>
@@ -41,7 +59,11 @@ export function UserCard({ user }: Props) {
         }}
       >
         <MdDiamond />
-        Follow
+        {userLogged!.usersFollowed.some(
+          (followedUser) => followedUser.id === user.id
+        )
+          ? 'Unfollow'
+          : 'Follow'}
       </button>
     </li>
   );

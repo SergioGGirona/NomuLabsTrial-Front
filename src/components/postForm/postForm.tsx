@@ -1,8 +1,11 @@
 import { SyntheticEvent, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { usePosts } from '../../hooks/use.posts';
 import styles from './postForm.module.scss';
+
 function NewPostForm() {
   const { addPost } = usePosts();
+  const navigate = useNavigate();
   const [overview, setOverview] = useState('');
   const [ingredients, setIngredients] = useState<string[]>([]);
   const [referenceUrl, setReferenceUrl] = useState('');
@@ -18,23 +21,14 @@ function NewPostForm() {
     const formData = new FormData();
     formData.append('overview', overview);
     formData.append('referenceUrl', referenceUrl);
-    formData.append('arrange', steps.arrange);
-    formData.append('boarding', steps.boarding);
-    formData.append('complete', steps.complete);
+    formData.append('steps.arrange', steps.arrange);
+    formData.append('steps.boarding', steps.boarding);
+    formData.append('steps.complete', steps.complete);
     ingredients.forEach((ingredient, index) => {
       formData.append(`ingredients[${index}]`, ingredient);
     });
-
     addPost(formData);
-
-    setOverview('');
-    setIngredients([]);
-    setReferenceUrl('');
-    setSteps({
-      arrange: '',
-      boarding: '',
-      complete: '',
-    });
+    navigate('/');
   };
 
   return (

@@ -35,6 +35,7 @@ function ProfileForm() {
   return (
     <form onSubmit={handleSubmit} className={styles.form__update}>
       <h2>Update your reward info:</h2>
+      <span>You will have to re-login to update</span>
       <div>
         <label htmlFor="nickName">Wanna change your nickName?</label>
         <input

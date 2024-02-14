@@ -5,7 +5,7 @@ export type Post = WithID & {
   author: User;
   overview: string;
   createdAt: Date;
-  likes: User[];
+  likes: string[];
   ingredients: string[];
   referenceUrl: string;
   steps: {

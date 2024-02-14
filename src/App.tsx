@@ -12,6 +12,7 @@ function App() {
     { path: '/search', label: 'Search' },
     { path: '/update', label: 'Update' },
     { path: '/post', label: 'Post' },
+    { path: '/post/:id', label: 'PostDetail' },
   ];
 
   return (

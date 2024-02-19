@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import { MdDiamond } from 'react-icons/md';
 import { useUsers } from '../../hooks/use.users';
 import { User } from '../../model/user';
@@ -7,33 +8,32 @@ type Props = {
   user: User;
 };
 export function UserCard({ user }: Props) {
-  const { userLogged, updateUser, token } = useUsers();
+  const { userLogged, followUser, unfollowUser } = useUsers();
 
-  const handleFollow = async (userToFollow: User) => {
-    if (!userLogged) return;
+  const [isUserFollowed, setIsUserFollowed] = useState<boolean>(false);
 
-    const isFollowing = userLogged.usersFollowed.some(
-      (followedUser) => followedUser.id === userToFollow.id
-    );
-
-    if (isFollowing) {
-      const updatedFollowedUsers = userLogged.usersFollowed.filter(
-        (followedUser) => followedUser.id !== userToFollow.id
+  useEffect(() => {
+    if (userLogged && userLogged.followers) {
+      const isFollowed = userLogged.followers.some(
+        (followedUser) => followedUser.id === user.id
       );
-      const updatedUserLogged: Partial<User> = {
-        usersFollowed: updatedFollowedUsers,
-      };
-
-      await updateUser(updatedUserLogged, userLogged.id, token);
-    } else {
-      const updatedFollowedUsers = [...userLogged.usersFollowed, userToFollow];
-      const updatedUserLogged: Partial<User> = {
-        usersFollowed: updatedFollowedUsers,
-      };
-
-      await updateUser(updatedUserLogged, userLogged.id, token);
+      setIsUserFollowed(isFollowed);
+    }
+  }, [userLogged, user]);
+  const handleFollow = async () => {
+    if (userLogged) {
+      await followUser(user);
+      setIsUserFollowed(true);
     }
   };
+
+  const handleUnfollow = async () => {
+    if (userLogged) {
+      await unfollowUser(user);
+      setIsUserFollowed(false);
+    }
+  };
+
   return (
     <li className={styles.user__card}>
       <div className={styles.user__card__main}>
@@ -53,17 +53,12 @@ export function UserCard({ user }: Props) {
       </div>
 
       <button
+        id={`follow-button-${user.id}`}
         className={styles.button__follow}
-        onClick={() => {
-          handleFollow(user);
-        }}
+        onClick={isUserFollowed ? handleUnfollow : handleFollow}
       >
         <MdDiamond />
-        {userLogged!.usersFollowed.some(
-          (followedUser) => followedUser.id === user.id
-        )
-          ? 'Unfollow'
-          : 'Follow'}
+        {isUserFollowed ? 'Unfollow' : 'Follow'}
       </button>
     </li>
   );

@@ -9,8 +9,8 @@ import {
 } from '../redux/posts.thunks';
 import { PostsRepository } from '../repository/posts.repository';
 import { AppDispatch, RootState } from './store.ts';
-import { useUsers } from './use.users.ts';
-export const urlBase = 'http://localhost:7373/';
+import { urlBase, useUsers } from './use.users.ts';
+
 export const urlPosts = urlBase + 'posts';
 
 export function usePosts() {

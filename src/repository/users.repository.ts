@@ -99,4 +99,37 @@ export class UsersRepository implements Repository<User> {
     const data = await request.json();
     return data;
   }
+
+  async follow(user: User, token: string): Promise<User> {
+    const response = await fetch(`${this.urlBase}/follow`, {
+      method: 'PATCH',
+      body: JSON.stringify(user),
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: 'Bearer ' + token,
+      },
+    });
+
+    if (!response.ok)
+      throw new Error(`Error ${response.status}: ${response.statusText}`);
+
+    const data = await response.json();
+    return data;
+  }
+
+  async unfollow(userToUnfollow: User, token: string): Promise<User> {
+    const response = await fetch(`${this.urlBase}/unfollow`, {
+      method: 'PATCH',
+      body: JSON.stringify(userToUnfollow),
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: 'Bearer ' + token,
+      },
+    });
+    if (!response.ok)
+      throw new Error(`Error ${response.status}: ${response.statusText}`);
+
+    const data = await response.json();
+    return data;
+  }
 }

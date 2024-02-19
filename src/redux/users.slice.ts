@@ -2,6 +2,7 @@ import { createAction, createSlice } from '@reduxjs/toolkit';
 import { User } from '../model/user';
 import { Payload } from '../types/payload';
 import {
+  followThunk,
   loginThunk,
   registerThunk,
   searchThunk,
@@ -90,6 +91,18 @@ const usersSlice = createSlice({
         state.hasError = false;
       }
     );
+
+    builder.addCase(
+      followThunk.fulfilled,
+      (state, { payload }: { payload: User }) => {
+        state.userLogged!.usersFollowed = payload.usersFollowed;
+        state.hasError = false;
+      }
+    );
+
+    builder.addCase(followThunk.rejected, (state) => {
+      state.hasError = true;
+    });
   },
 });
 

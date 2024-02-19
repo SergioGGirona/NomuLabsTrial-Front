@@ -55,3 +55,29 @@ export const searchThunk = createAsyncThunk<
   const userSearched = await repository.search(user);
   return userSearched;
 });
+
+export const followThunk = createAsyncThunk<
+  User,
+  {
+    repository: UsersRepository;
+    userToFollow: User;
+    token: string;
+  }
+>('users/follow', async ({ repository, userToFollow, token }) => {
+  const updatedUser = await repository.follow(userToFollow, token);
+
+  return updatedUser;
+});
+
+export const unfollowThunk = createAsyncThunk<
+  User,
+  {
+    repository: UsersRepository;
+    user: User;
+    token: string;
+  }
+>('users/unfollow', async ({ repository, user, token }) => {
+  const updatedUser = await repository.unfollow(user, token);
+
+  return updatedUser;
+});

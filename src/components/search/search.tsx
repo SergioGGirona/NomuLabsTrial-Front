@@ -1,6 +1,6 @@
 import { FaSearch } from 'react-icons/fa';
-import { Link } from 'react-router-dom';
 import { useUsers } from '../../hooks/use.users';
+import { PreLogin } from '../preLogin/preLogin';
 import { UserCard } from '../userCard/userCard';
 import styles from './search.module.scss';
 
@@ -11,8 +11,13 @@ function Search() {
     const inputElement = (
       document.querySelector(searchTerm) as HTMLInputElement
     ).value.toLocaleLowerCase();
-
     searchFollowers(inputElement);
+  };
+
+  const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
+    if (event.key === 'Enter') {
+      handleSearch('#searchTerm');
+    }
   };
 
   return (
@@ -24,6 +29,8 @@ function Search() {
               type="search"
               id="searchTerm"
               placeholder="Who are you looking for?"
+              required={true}
+              onKeyDown={handleKeyDown}
             />
             <button onClick={() => handleSearch('#searchTerm')}>
               <FaSearch />
@@ -41,13 +48,7 @@ function Search() {
           </div>
         </main>
       ) : (
-        <div className={styles['pre-login']}>
-          <h2>A sea of adventures awaits!</h2>
-          <p>But you must be logged in to navigate these waters. </p>
-          <Link className={styles.link} to={'/login'}>
-            On board!
-          </Link>
-        </div>
+        <PreLogin></PreLogin>
       )}
     </>
   );

@@ -7,6 +7,7 @@ export type Post = WithID & {
   createdAt: Date;
   likes: string[];
   ingredients: string[];
+  aproxTime: number;
   referenceUrl: string;
   steps: {
     arrange: string;

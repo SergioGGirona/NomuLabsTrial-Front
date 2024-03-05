@@ -13,6 +13,7 @@ const NewPost = lazy(() => import('../components/postForm/postForm'));
 const PostDetail = lazy(
   () => import('../components/posts/post/postDetail/postDetail')
 );
+const UpdatePost = lazy(() => import('../components/updatePost/updatePost'));
 
 type Props = {
   readonly options: RoutesOptions[];
@@ -31,6 +32,7 @@ export function AppRouter({ options }: Props) {
         <Route path={paths[5]} element={<Update />}></Route>
         <Route path={paths[6]} element={<NewPost />}></Route>
         <Route path={paths[7]} element={<PostDetail />}></Route>
+        <Route path={paths[8]} element={<UpdatePost />}></Route>
       </Routes>
     </Suspense>
   );

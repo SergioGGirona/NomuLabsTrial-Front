@@ -51,6 +51,7 @@ function NewPostForm() {
               id="overview"
               value={overview}
               onChange={(e) => setOverview(e.target.value)}
+              required={true}
             />
           </div>
           <div className={styles.form__post__text}>
@@ -71,6 +72,7 @@ function NewPostForm() {
                 id="aproxTime"
                 value={aproxTime}
                 onChange={(e) => setAproxTime(e.target.value)}
+                required={true}
               />
               minutes
             </div>
@@ -84,6 +86,7 @@ function NewPostForm() {
               value={ingredients.join(', ')}
               placeholder="ex: olives, mozarella, tomato..."
               onChange={(e) => setIngredients(e.target.value.split(', '))}
+              required={true}
             />
           </div>
 

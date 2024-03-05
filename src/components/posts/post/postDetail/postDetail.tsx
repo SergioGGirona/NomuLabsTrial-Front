@@ -39,7 +39,17 @@ function PostDetail() {
           </fieldset>
           {post.referenceUrl ? (
             <p className={styles.reference}>
-              The reference: <em>{post.referenceUrl}</em>
+              The reference:
+              <a
+                href={
+                  post.referenceUrl.startsWith('http')
+                    ? post.referenceUrl
+                    : `http://${post.referenceUrl}`
+                }
+                target="_blank"
+              >
+                {post.referenceUrl}
+              </a>
             </p>
           ) : (
             <p className={styles.reference}>No reference url this time!</p>

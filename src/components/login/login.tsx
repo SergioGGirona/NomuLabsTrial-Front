@@ -39,6 +39,7 @@ function Login() {
           name="userName"
           className={styles.input}
           placeholder="Enter your username"
+          autoComplete="on"
           required
         />
       </div>
@@ -61,7 +62,7 @@ function Login() {
         Log in
       </button>
       <p>
-        Not registered yet? <a href="/register">Click here</a>
+        Not in our crew? <a href="/register">Register here</a>
       </p>
     </form>
   );

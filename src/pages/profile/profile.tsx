@@ -6,7 +6,7 @@ import {
 } from 'react-icons/bs';
 import { FaRegEdit } from 'react-icons/fa';
 import { GiTreasureMap } from 'react-icons/gi';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { PreLogin } from '../../components/preLogin/preLogin';
 import { usePosts } from '../../hooks/use.posts';
 import { useUsers } from '../../hooks/use.users';
@@ -16,6 +16,7 @@ function Profile() {
   const { userLogged } = useUsers();
   const { erasePost, loadPosts, posts } = usePosts();
   const [postIdToDelete, setPostIdToDelete] = useState<string | null>(null);
+  const navigate = useNavigate();
 
   if (!userLogged) {
     return <PreLogin></PreLogin>;
@@ -27,7 +28,7 @@ function Profile() {
 
   const userPosts = posts.filter((post) => post.author.id === userLogged.id);
 
-  const confirmDelete = (postId: string) => {
+  const openModal = (postId: string) => {
     setPostIdToDelete(postId);
   };
 
@@ -104,10 +105,10 @@ function Profile() {
                   <span>{post.aproxTime} minutes</span>
                 </div>
                 <div className={styles['post-buttons']}>
-                  <button>
+                  <button onClick={() => navigate(`/updatePost/${post.id}`)}>
                     <FaRegEdit />
                   </button>
-                  <button onClick={() => confirmDelete(post.id)}>
+                  <button onClick={() => openModal(post.id)}>
                     <BsEraserFill />
                   </button>
                   {postIdToDelete === post.id && (

@@ -21,6 +21,8 @@
     h4 {
       font-style: italic;
       font-size: 1.2rem;
+    }
+    h4::first-letter {
       text-transform: capitalize;
     }
   }
@@ -29,11 +31,11 @@
     align-items: center;
     padding: 1rem 0;
     gap: 0.5rem;
+    max-height: 5rem;
     mask-image: linear-gradient(to bottom, white 55%, transparent 95%);
+    margin-bottom: 0.5rem;
     p {
-      margin: 0;
       min-height: 1rem;
-      max-height: 2rem;
       overflow: hidden;
     }
   }

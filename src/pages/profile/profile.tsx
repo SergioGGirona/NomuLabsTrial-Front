@@ -23,8 +23,9 @@ function Profile() {
   }
 
   useEffect(() => {
+    userLogged;
     loadPosts();
-  }, [loadPosts]);
+  }, [loadPosts, userLogged]);
 
   const userPosts = posts.filter((post) => post.author.id === userLogged.id);
 
@@ -95,7 +96,7 @@ function Profile() {
         </span>
       </div>
       <div className={styles.user__posts}>
-        <h4>Your posts:</h4>
+        <h4>Your recipes:</h4>
         <ul>
           {userPosts.map((post) => {
             return (

@@ -1,12 +1,11 @@
 import { useEffect, useState } from 'react';
-import { FaCrown } from 'react-icons/fa6';
 import { MdOpenInNew } from 'react-icons/md';
+import { PiForkKnifeFill } from 'react-icons/pi';
 import { Link } from 'react-router-dom';
 import { usePosts } from '../../../hooks/use.posts';
 import { useUsers } from '../../../hooks/use.users';
 import { Post } from '../../../model/post';
 import styles from './post.module.scss';
-
 type Props = {
   post: Post;
 };
@@ -47,7 +46,7 @@ export function PostRecipe({ post }: Props) {
       <div className={styles.post__buttons}>
         <div className={styles['post__button-button']}>
           <button onClick={handleLike} disabled={hasLiked}>
-            <FaCrown />
+            <PiForkKnifeFill />
           </button>
           <span>{post.likes.length} likes</span>
         </div>

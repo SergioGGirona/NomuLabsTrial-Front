@@ -1,13 +1,20 @@
-import { SyntheticEvent } from 'react';
+import { SyntheticEvent, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useUsers } from '../../hooks/use.users';
 import { UserLogin } from '../../model/user';
 import styles from './login.module.scss';
 
 function Login() {
-  const { loginUser } = useUsers();
+  const { loginUser, userStatus, hasError } = useUsers();
 
   const navigate = useNavigate();
+
+  useEffect(() => {
+    if (userStatus === 'logged') {
+      navigate('/');
+    }
+  }, [userStatus, navigate]);
+
   const handleSubmit = (ev: SyntheticEvent) => {
     ev.preventDefault();
 
@@ -22,13 +29,18 @@ function Login() {
     } catch (error) {
       console.log(error);
     }
-    navigate('/');
   };
 
   return (
-    <form className={styles.loginForm} onSubmit={handleSubmit}>
+    <form className={styles.loginForm} onSubmit={handleSubmit} role="form">
       <h3>Start sailing</h3>
-
+      {userStatus === 'error' && hasError === true ? (
+        <span className={styles.errorLogin}>
+          Nombre de usuario o contraseña incorrectos
+        </span>
+      ) : (
+        <></>
+      )}
       <div className={styles.formGroup}>
         <label htmlFor="userName" className={styles.label}>
           Username

@@ -28,8 +28,7 @@ function ProfileForm() {
       isPrivate: isPrivate,
     };
     await updateUser(userData, userLogged.id, token);
-    navigate('/');
-    window.location.reload();
+    navigate('/profile');
   };
 
   return (

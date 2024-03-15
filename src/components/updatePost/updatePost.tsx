@@ -46,7 +46,11 @@ function UpdatePost() {
   };
 
   return (
-    <form onSubmit={handleSubmit} className={styles.form__post}>
+    <form
+      onSubmit={handleSubmit}
+      className={styles.form__post}
+      aria-label="form-to-update-post"
+    >
       <hgroup>
         <h3>A new pirate recipe?</h3>
         <p>Let's see that!</p>

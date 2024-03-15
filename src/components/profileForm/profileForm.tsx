@@ -32,7 +32,11 @@ function ProfileForm() {
   };
 
   return (
-    <form onSubmit={handleSubmit} className={styles.form__update}>
+    <form
+      onSubmit={handleSubmit}
+      className={styles.form__update}
+      aria-label="form-to-update-profile"
+    >
       <h2>Update your reward info:</h2>
       <span>You will have to re-login to update</span>
       <div>

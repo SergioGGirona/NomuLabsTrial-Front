@@ -32,7 +32,12 @@ function Login() {
   };
 
   return (
-    <form className={styles.loginForm} onSubmit={handleSubmit} role="form">
+    <form
+      className={styles.loginForm}
+      onSubmit={handleSubmit}
+      role="form"
+      aria-label="form-to-login"
+    >
       <h3>Start sailing</h3>
       {userStatus === 'error' && hasError === true ? (
         <span className={styles.errorLogin}>

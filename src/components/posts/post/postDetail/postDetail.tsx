@@ -78,7 +78,11 @@ function PostDetail() {
         </div>
       </section>
       <section className={styles.comments}>
-        <form className={styles.comments__create} onSubmit={handleSubmit}>
+        <form
+          className={styles.comments__create}
+          onSubmit={handleSubmit}
+          aria-label="form-to-create-comment"
+        >
           <textarea
             name="content"
             id="content"

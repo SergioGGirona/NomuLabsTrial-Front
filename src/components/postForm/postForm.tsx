@@ -18,8 +18,8 @@ function NewPostForm() {
     boarding: '',
     complete: '',
   });
-
-  const handleSubmit = (ev: SyntheticEvent) => {
+  const [images, setImages] = useState<FileList | null>(null);
+  const handleSubmit = async (ev: SyntheticEvent) => {
     ev.preventDefault();
 
     const formData = new FormData();
@@ -32,14 +32,23 @@ function NewPostForm() {
     ingredients.forEach((ingredient, index) => {
       formData.append(`ingredients[${index}]`, ingredient);
     });
-    addPost(formData);
+    if (images) {
+      for (let i = 0; i < images.length; i++) {
+        formData.append('images', images[i]);
+      }
+    }
+    await addPost(formData);
     navigate('/');
   };
 
   return (
     <>
       {userStatus === 'logged' && token.length > 15 ? (
-        <form onSubmit={handleSubmit} className={styles.form__post}>
+        <form
+          onSubmit={handleSubmit}
+          className={styles.form__post}
+          aria-label="form-to-create-new-post"
+        >
           <hgroup>
             <h3>A new pirate recipe?</h3>
             <p>Let's see that!</p>
@@ -125,7 +134,18 @@ function NewPostForm() {
               />
             </div>
           </fieldset>
-
+          <label htmlFor="file">
+            Do you have any photo of the process or result?
+          </label>
+          <span className={styles.hidden}>Max 4 images</span>
+          <input
+            id="file"
+            type="file"
+            name="images"
+            accept="image/png, image/jpeg, image/webp, image/avif, image/gif"
+            multiple
+            onChange={(e) => setImages(e.target.files)}
+          />
           <button type="submit">Publish</button>
         </form>
       ) : (

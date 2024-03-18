@@ -10,9 +10,8 @@ import {
   updateThunk,
 } from '../redux/users.thunks';
 import { UsersRepository } from '../repository/users.repository';
-import { AppDispatch, RootState } from './store.ts';
+import { AppDispatch, RootState, urlBase } from './store.ts';
 
-export const urlBase = 'http://localhost:7373/';
 export const urlUsers = urlBase + 'users';
 
 export function useUsers() {

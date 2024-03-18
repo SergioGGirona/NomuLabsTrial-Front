@@ -3,8 +3,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Comment } from '../model/comment.ts';
 import { addThunk, eraseThunk, loadThunk } from '../redux/comments.thunks';
 import { CommentsRepository } from '../repository/comments.repository';
-import { AppDispatch, RootState } from './store.ts';
-import { urlBase, useUsers } from './use.users.ts';
+import { AppDispatch, RootState, urlBase } from './store.ts';
+import { useUsers } from './use.users.ts';
 
 export const urlComments = urlBase + 'comments';
 

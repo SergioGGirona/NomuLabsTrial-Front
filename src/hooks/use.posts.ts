@@ -8,8 +8,8 @@ import {
   updateThunk,
 } from '../redux/posts.thunks';
 import { PostsRepository } from '../repository/posts.repository';
-import { AppDispatch, RootState } from './store.ts';
-import { urlBase, useUsers } from './use.users.ts';
+import { AppDispatch, RootState, urlBase } from './store.ts';
+import { useUsers } from './use.users.ts';
 
 export const urlPosts = urlBase + 'posts';
 

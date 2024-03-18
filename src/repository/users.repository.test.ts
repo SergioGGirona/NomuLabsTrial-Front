@@ -31,7 +31,7 @@ describe('Given the class Users Repository', () => {
     });
 
     test('Then, method create should have been called', () => {
-      mockRepo.create(mockUser as unknown as FormData, mockToken);
+      mockRepo.create(mockUser as unknown as FormData);
       expect(global.fetch).toHaveBeenCalled();
     });
 
@@ -90,7 +90,7 @@ describe('Given the class Users Repository', () => {
       });
 
       expect(
-        mockErrorRepo.create(mockUser as unknown as FormData, mockToken)
+        mockErrorRepo.create(mockUser as unknown as FormData)
       ).rejects.toThrow();
     });
 

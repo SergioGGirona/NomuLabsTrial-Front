@@ -1,5 +1,6 @@
 import { useMemo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { localUrl } from '../config.ts';
 import { User, UserLogin } from '../model/user.ts';
 import {
   followThunk,
@@ -10,9 +11,9 @@ import {
   updateThunk,
 } from '../redux/users.thunks';
 import { UsersRepository } from '../repository/users.repository';
-import { AppDispatch, RootState, urlBase } from './store.ts';
+import { AppDispatch, RootState } from './store.ts';
 
-export const urlUsers = urlBase + 'users';
+export const urlUsers = localUrl + 'users';
 
 export function useUsers() {
   const repository = useMemo(() => new UsersRepository(urlUsers), []);

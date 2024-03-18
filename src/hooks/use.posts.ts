@@ -1,5 +1,6 @@
 import { useCallback, useMemo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { localUrl } from '../config.ts';
 import { Post } from '../model/post.ts';
 import {
   addThunk,
@@ -8,10 +9,10 @@ import {
   updateThunk,
 } from '../redux/posts.thunks';
 import { PostsRepository } from '../repository/posts.repository';
-import { AppDispatch, RootState, urlBase } from './store.ts';
+import { AppDispatch, RootState } from './store.ts';
 import { useUsers } from './use.users.ts';
 
-export const urlPosts = urlBase + 'posts';
+export const urlPosts = localUrl + 'posts';
 
 export function usePosts() {
   const { token } = useUsers();

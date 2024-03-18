@@ -38,9 +38,15 @@ export function PostRecipe({ post }: Props) {
         <span>{post.author.userName}</span>
         <h4>{post.overview}</h4>
       </div>
+      <img
+        src={post.images[0].url}
+        className={styles.recipeImage}
+        alt="The main view of the recipe"
+      />
+
       <span className={styles.post_li__ingredients}>
         {post.ingredients.map((ingredient, index) => (
-          <p key={index}>- {ingredient}</p>
+          <p key={index}> ↪ {ingredient}</p>
         ))}
       </span>
       <div className={styles.post__buttons}>
@@ -48,7 +54,9 @@ export function PostRecipe({ post }: Props) {
           <button onClick={handleLike} disabled={hasLiked}>
             <PiForkKnifeFill />
           </button>
-          <span>{post.likes.length} likes</span>
+          <span className={styles.post__buttons__likes}>
+            {post.likes.length} likes
+          </span>
         </div>
         <Link className={styles['post__button-link']} to={`/post/${post.id}`}>
           <MdOpenInNew />

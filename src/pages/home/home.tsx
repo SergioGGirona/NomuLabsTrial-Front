@@ -1,12 +1,16 @@
 import { Link } from 'react-router-dom';
 import { Posts } from '../../components/posts/posts';
+import { Spinner } from '../../components/spinner/spinner';
+import { usePosts } from '../../hooks/use.posts';
 import { useUsers } from '../../hooks/use.users';
 import styles from './home.module.scss';
 function Home() {
   const { userStatus, token } = useUsers();
+  const { postStatus } = usePosts();
 
   return (
     <>
+      {userStatus === 'pending' || (postStatus === 'loading' && <Spinner />)}
       {userStatus === 'logged' && token.length > 15 ? (
         <main>
           <Posts />

@@ -36,9 +36,20 @@ function PostDetail() {
         <h4>{post.overview}</h4>
         <div className={styles.postDetail__author}>
           <p>{post.author.userName}</p>
-          <p>{post.author.nickName}</p>
           <span>{post.likes.length} likes</span>
           <span>{post.aproxTime} minutes</span>
+        </div>
+        <div className={styles.postDetail__images}>
+          {post.images.map((image) => {
+            return (
+              <img
+                className={styles.postDetail__images__image}
+                src={image.url}
+                alt="Step of the recipe"
+                key={image.publicId}
+              />
+            );
+          })}
         </div>
         <div className={styles.recipe}>
           <ul className={styles.recipe__field}>

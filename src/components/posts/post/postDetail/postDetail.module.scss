@@ -9,7 +9,7 @@
     gap: 0.5rem;
     border: 1px solid #333;
     margin: 1rem;
-    border-radius: 10px;
+    border-radius: 4px;
     padding: 1rem;
     h4 {
       font-size: 2rem;
@@ -22,24 +22,41 @@
       border-top: 1px solid #333;
       border-bottom: 1px solid #333;
     }
-    .recipe {
+    .postDetail__images {
       display: flex;
-      flex-direction: column;
-      overflow: hidden;
-      .recipe__field {
-        margin: 0 0 1.2rem 0;
-        width: 90%;
-        border-radius: 5px;
-      }
-    }
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: center;
 
-    .reference {
-      font-weight: 400;
-      color: #333;
-      a {
-        padding-inline-start: 5px;
+      .postDetail__images__image {
+        height: 10rem;
+        width: 16rem;
+        object-fit: cover;
+        border-radius: 4px;
+      }
+      @media (min-width: 700px) {
+      }
+      .recipe {
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+
+        .recipe__field {
+          display: block;
+          margin: 0 0 1.2rem 0;
+          width: 90%;
+          border-radius: 4px;
+        }
+      }
+
+      .reference {
+        font-weight: 400;
         color: #333;
-        font-weight: 600;
+        a {
+          padding-inline-start: 5px;
+          color: #333;
+          font-weight: 600;
+        }
       }
     }
   }
@@ -50,9 +67,9 @@
     gap: 1rem;
     background-color: #333;
     min-height: 30vh;
-    max-width: 400px;
+    max-width: 500px;
     border: 1px solid #333;
-    border-radius: 10px;
+    border-radius: 4px;
     .comments__create {
       display: flex;
       flex-direction: column;
@@ -60,12 +77,12 @@
       textarea {
         height: fit-content;
         border: solid 1px #333;
-        border-radius: 5px;
+        border-radius: 4px;
         padding: 1rem;
+        font-family: 'Helvetica';
         &:focus {
           outline: 0 none;
         }
-        font-family: 'Helvetica';
       }
       button {
         width: 30%;
@@ -73,7 +90,7 @@
         background-color: #fff;
         color: #333;
         border: none;
-        border-radius: 5px;
+        border-radius: 4px;
         cursor: pointer;
         transition: all 0.3s ease;
         &:hover {

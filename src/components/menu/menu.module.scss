@@ -6,7 +6,7 @@
   padding: 0.2rem 0 0;
   width: 100vw;
   border-top: 1px solid #333;
-  background-color: #f0f5f3;
+  background-color: #fef9e9ee;
   ul {
     display: flex;
     align-items: center;
@@ -42,6 +42,8 @@
     height: 4rem;
     padding: 1rem 0;
     border: none;
+    background-color: transparent;
+
     ul {
       display: flex;
       align-items: center;
@@ -53,7 +55,6 @@
         align-items: center;
         justify-content: center;
         height: 5rem;
-        width: 5rem;
       }
     }
   }

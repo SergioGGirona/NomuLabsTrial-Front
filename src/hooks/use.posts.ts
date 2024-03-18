@@ -35,6 +35,16 @@ export function usePosts() {
   const erasePost = async (post: Post) => {
     postsDispatch(eraseThunk({ repository, post, token }));
   };
+
+  const getPostById = async (postId: string) => {
+    try {
+      return await repository.getById(postId);
+    } catch (error) {
+      console.error('Error fetching post details:', error);
+      throw error;
+    }
+  };
+
   return {
     posts: postsState.posts,
     postStatus: postsState.postsStatus,
@@ -43,5 +53,6 @@ export function usePosts() {
     addPost,
     updatePost,
     erasePost,
+    getPostById,
   };
 }

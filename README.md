@@ -2,6 +2,8 @@
 
 The goal of this challenge is to evaluate candidates' technical skills in developing a Simple Social Network using Node.js and React.js. Candidates should create an application that allows users to register, search for other users by username, create posts, follow other users, view content created by the users they follow, set privacy settings, and perform actions such as commenting and liking posts.
 
+**If you want to try the application, I recommend that you log in as Luffy, Zoro or Sanji** (the password is exactly the same as the username).
+
 ## Front
 
 The project has been developed with Vite as compiler to write in Typescript and modular Scss. Redux has been used to manage the state and ad hoc hooks have been created with the thunks to manage the different actions that call the back.

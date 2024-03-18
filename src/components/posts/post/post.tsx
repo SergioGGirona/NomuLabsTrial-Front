@@ -1,12 +1,11 @@
 import { useEffect, useState } from 'react';
-import { FaCrown } from 'react-icons/fa6';
 import { MdOpenInNew } from 'react-icons/md';
+import { PiForkKnifeFill } from 'react-icons/pi';
 import { Link } from 'react-router-dom';
 import { usePosts } from '../../../hooks/use.posts';
 import { useUsers } from '../../../hooks/use.users';
 import { Post } from '../../../model/post';
 import styles from './post.module.scss';
-
 type Props = {
   post: Post;
 };
@@ -39,17 +38,25 @@ export function PostRecipe({ post }: Props) {
         <span>{post.author.userName}</span>
         <h4>{post.overview}</h4>
       </div>
+      <img
+        src={post.images[0].url}
+        className={styles.recipeImage}
+        alt="The main view of the recipe"
+      />
+
       <span className={styles.post_li__ingredients}>
         {post.ingredients.map((ingredient, index) => (
-          <p key={index}>- {ingredient}</p>
+          <p key={index}> ↪ {ingredient}</p>
         ))}
       </span>
       <div className={styles.post__buttons}>
         <div className={styles['post__button-button']}>
           <button onClick={handleLike} disabled={hasLiked}>
-            <FaCrown />
+            <PiForkKnifeFill />
           </button>
-          <span>{post.likes.length} likes</span>
+          <span className={styles.post__buttons__likes}>
+            {post.likes.length} likes
+          </span>
         </div>
         <Link className={styles['post__button-link']} to={`/post/${post.id}`}>
           <MdOpenInNew />

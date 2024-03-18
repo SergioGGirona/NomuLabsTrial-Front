@@ -9,7 +9,17 @@ html {
   scroll-behavior: smooth;
   scroll-snap-type: y mandatory;
   overflow-x: hidden;
-  background-color: #f0f5f3;
+  background-color: #fff0cb;
+  opacity: 1;
+  background-color: #fff0cb;
+  opacity: 1;
+  min-height: 100vh;
+  background-image: repeating-radial-gradient(
+      circle at 0 0,
+      transparent 0,
+      #fff0cb 40px
+    ),
+    repeating-linear-gradient(#e3cfbd55, #e3cfbd);
 }
 
 div,

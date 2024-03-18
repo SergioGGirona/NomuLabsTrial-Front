@@ -28,12 +28,15 @@ function ProfileForm() {
       isPrivate: isPrivate,
     };
     await updateUser(userData, userLogged.id, token);
-    navigate('/');
-    window.location.reload();
+    navigate('/profile');
   };
 
   return (
-    <form onSubmit={handleSubmit} className={styles.form__update}>
+    <form
+      onSubmit={handleSubmit}
+      className={styles.form__update}
+      aria-label="form-to-update-profile"
+    >
       <h2>Update your reward info:</h2>
       <span>You will have to re-login to update</span>
       <div>

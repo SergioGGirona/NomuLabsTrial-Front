@@ -1,3 +1,4 @@
+import { ImageData } from '../types/image';
 import { Comment } from './comment';
 import { User, WithID } from './user';
 
@@ -7,6 +8,7 @@ export type Post = WithID & {
   createdAt: Date;
   likes: string[];
   ingredients: string[];
+  aproxTime: number;
   referenceUrl: string;
   steps: {
     arrange: string;
@@ -14,4 +16,5 @@ export type Post = WithID & {
     complete: string;
   };
   comments: Comment[];
+  images: ImageData[];
 };

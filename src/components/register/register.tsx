@@ -25,7 +25,7 @@ function Register() {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} aria-label="form-to-register">
       <hgroup>
         <h3>Hoist the Jolly Roger!</h3>
         <p>and enjoy taking recipes from all over the world.</p>
@@ -89,7 +89,7 @@ function Register() {
 
       <div className={styles['form__group']}>
         <label htmlFor="avatar">Choose a photo for the reward poster</label>
-        <input type="file" id="avatar" name="avatar" required />
+        <input type="file" id="avatar" name="avatar" />
       </div>
       <button type="submit">Register</button>
     </form>

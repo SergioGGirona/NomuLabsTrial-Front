@@ -1,0 +1,27 @@
+.spinner {
+  height: 70vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  .spinner_image {
+    height: 10rem;
+    width: 10rem;
+    animation: wheel-rotate 3s ease-in-out infinite alternate;
+  }
+  span {
+    padding: 1rem;
+    font-size: 1.3rem;
+  }
+}
+
+@keyframes wheel-rotate {
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(180deg);
+  }
+}

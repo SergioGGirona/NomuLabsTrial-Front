@@ -1,10 +1,22 @@
 h2 {
   font-weight: 100;
+  margin: 1rem 0;
 }
 .users__posts {
   display: flex;
-  flex-direction: column;
+  flex-direction: column-reverse;
   align-items: center;
   justify-content: center;
   margin-bottom: 2rem;
+}
+
+@media (min-width: 700px) {
+  .users__posts {
+    ul {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+  }
 }

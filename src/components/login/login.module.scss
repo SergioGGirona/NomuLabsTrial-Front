@@ -9,6 +9,12 @@
     font-size: 24px;
     margin-bottom: 20px;
   }
+  .errorLogin {
+    font-size: 0.8rem;
+    color: red;
+    animation: errorAnimation 0.1s linear normal;
+    animation-iteration-count: 3;
+  }
 
   .formGroup {
     .label {
@@ -20,7 +26,7 @@
     .input {
       padding: 10px;
       border: 1px solid #ccc;
-      border-radius: 5px;
+      border-radius: 3px;
     }
   }
 
@@ -30,7 +36,7 @@
     background-color: #333;
     color: #fff;
     border: none;
-    border-radius: 5px;
+    border-radius: 3px;
     cursor: pointer;
     transition: background-color 0.3s ease;
 
@@ -44,5 +50,22 @@
       font-weight: 600;
       color: #333;
     }
+  }
+}
+
+@keyframes errorAnimation {
+  0% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(2px);
+  }
+  75% {
+    visibility: 100%;
+
+    transform: translateX(-2px);
+  }
+  100% {
+    transform: translateX(0);
   }
 }

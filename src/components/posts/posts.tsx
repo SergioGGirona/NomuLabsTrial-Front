@@ -12,10 +12,10 @@ export function Posts() {
 
   return (
     <>
-      <h2>Pirate recipes you follow</h2>
+      <h2>Something you wanna cook?</h2>
       <section className={styles.users__posts}>
         {postStatus === 'loaded' && (
-          <ul className={styles.wolvesList}>
+          <ul>
             {posts.map((item) => (
               <PostRecipe key={item.id} post={item}></PostRecipe>
             ))}

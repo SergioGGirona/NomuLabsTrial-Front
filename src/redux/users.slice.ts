@@ -87,7 +87,7 @@ const usersSlice = createSlice({
     builder.addCase(
       updateThunk.fulfilled,
       (state, { payload }: { payload: User }) => {
-        state.userLogged!.usersFollowed = payload.usersFollowed;
+        state.userLogged = payload;
         state.hasError = false;
       }
     );

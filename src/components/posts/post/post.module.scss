@@ -3,50 +3,76 @@
   flex-direction: column;
   width: 250px;
   margin: 1rem;
-  border: 1px solid #333;
-  border-radius: 10px;
-  padding: 1rem;
-  box-shadow: 5px 5px 10px #333;
-
+  border-radius: 4px;
+  box-shadow: 2px 2px 5px #333;
+  position: relative;
+  overflow: hidden;
+  background-color: #fff0cb;
+  opacity: 1;
+  background-color: #bc8b60;
   div {
+    padding: 0.5rem 1rem;
     display: flex;
     gap: 0.5rem;
     align-items: center;
+
     span {
       color: white;
       background-color: #333;
-      border-radius: 5px;
+      border-radius: 4px;
       padding: 0.2rem;
     }
     h4 {
       font-style: italic;
       font-size: 1.2rem;
+    }
+    h4::first-letter {
       text-transform: capitalize;
     }
   }
+  .recipeImage {
+    width: 100%;
+    height: 10rem;
+    object-fit: cover;
+    filter: brightness(1.2);
+    filter: sepia(20%);
+  }
+  .recipeImage:hover + .post_li__ingredients {
+    animation: 0.5s ease-in-out 1 listAppear;
+    opacity: 1;
+  }
   .post_li__ingredients {
-    flex-wrap: wrap;
-    align-items: center;
-    padding: 1rem 0;
-    gap: 0.5rem;
-    mask-image: linear-gradient(to bottom, white 55%, transparent 95%);
+    position: absolute;
+    top: 5rem;
+    right: 10px;
+    color: #333;
+    background-color: #fff0cb;
+    opacity: 0;
+    max-height: 5rem;
+    max-width: 8rem;
+    margin-bottom: 0.5rem;
+    overflow: hidden;
+    border-radius: 4px;
     p {
-      margin: 0;
-      min-height: 1rem;
-      max-height: 2rem;
+      font-size: 0.8rem;
+      font-weight: 400;
       overflow: hidden;
+      padding: 0.1rem;
+    }
+    &:hover {
+      animation: 0.5s ease-in-out 1 listAppear;
+      opacity: 1;
     }
   }
 
   .post__buttons {
     display: flex;
+    justify-content: center;
     justify-content: space-between;
 
     .post__button-button {
-      background-color: #333;
-      width: 40%;
-      border-radius: 5px;
-      padding: 0.1rem;
+      border-radius: 4px;
+      padding: 0 0.2rem;
     }
   }
   button,
@@ -56,7 +82,6 @@
     border: none;
     background-color: #333;
     cursor: pointer;
-    border-right: 1px solid white;
     border-radius: 4px;
     svg {
       color: white;
@@ -64,11 +89,29 @@
     }
   }
   button:disabled {
-    visibility: hidden;
+    display: none;
   }
   .post__button-link {
     display: flex;
     align-items: center;
     justify-content: center;
+  }
+  .post__buttons__likes {
+    height: 2rem;
+    line-height: 2rem;
+    padding: 0 0.5rem;
+  }
+}
+
+@keyframes listAppear {
+  0% {
+    transform: translate(50px);
+  }
+
+  80% {
+    transform: translate(-10px);
+  }
+  100% {
+    transform: translate(0px);
   }
 }

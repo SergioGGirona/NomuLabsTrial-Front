@@ -7,6 +7,11 @@ The goal of this challenge is to evaluate candidates' technical skills in develo
 ## Front
 
 The project has been developed with Vite as compiler to write in Typescript and modular Scss. Redux has been used to manage the state and ad hoc hooks have been created with the thunks to manage the different actions that call the back.
+Uploaded in Vercel: https://nomu-labs-trial-front.vercel.app/
+
+## Back
+
+I have developed the back End with three endpoints: User, Post and Comment with Node and Express. Uploaded in Render: https://nomulabstrial-back.onrender.com
 
 ### Overview
 

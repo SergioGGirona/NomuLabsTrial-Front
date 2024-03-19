@@ -38,11 +38,15 @@ export function PostRecipe({ post }: Props) {
         <span>{post.author.userName}</span>
         <h4>{post.overview}</h4>
       </div>
-      <img
-        src={post.images[0].url}
-        className={styles.recipeImage}
-        alt="The main view of the recipe"
-      />
+      {post.images.length >= 1 ? (
+        <img
+          src={post.images[0].url}
+          className={styles.recipeImage}
+          alt="The main view of the recipe"
+        />
+      ) : (
+        <p className={styles.noRecipeImage}>No photo but still delicious!</p>
+      )}
 
       <span className={styles.post_li__ingredients}>
         {post.ingredients.map((ingredient, index) => (
